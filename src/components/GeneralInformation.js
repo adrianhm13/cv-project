@@ -1,25 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class GeneralInformation extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-            firstName: ""
-        }
-    }
-    
+    this.state = {
+      firstName: "",
+      lastName: "",
+    };
+  }
 
-    render() {
-        console.log(this.props)
-        const {firstName} = this.props
-        return (
-            <div>
-                <input type="text" value={firstName} onChange={this.props.handleFirstName}></input>
-            </div>
-        )
-    }
+  render() {
+    const { handleFirstName, handleLastName } =
+      this.props.handleGeneralInformation;
+    const { firstName, lastName } = this.props;
+    return (
+      <div>
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={handleFirstName}
+          ></input>
+        </div>
+        <div>
+        <label>Last Name</label>
+          <input type="text" value={lastName} onChange={handleLastName}></input>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default GeneralInformation
+export default GeneralInformation;

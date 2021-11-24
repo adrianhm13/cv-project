@@ -7,27 +7,42 @@ class App extends Component {
     super(props);
 
     this.state = {
-      firstName: "",
+      generalInformation: {
+        firstName: "",
+        lastName: "",
+      }
+
+
     };
   }
+  handleGeneralInformation =  {
+    handleFirstName: (e) => {
+      this.setState({
+        generalInformation: {
+          firstName: e.target.value,
+          lastName: this.state.generalInformation.lastName
+        }
+      });
+    },
+    handleLastName: (e) => {
+      this.setState({
+        generalInformation: {
+          firstName: this.state.generalInformation.firstName,
+          lastName: e.target.value
+        }
+      });
+    },
+  }
 
-  handleFirstName = (e) => {
-    console.log("hu");
-    this.setState({
-      firstName: e.target.value,
-    });
-  };
   render() {
     return (
       <div className="App">
         <div className="edit-information">
           Hee
-          <GeneralInformation
-            handleFirstName={this.handleFirstName}
-          ></GeneralInformation>
+          <GeneralInformation handleGeneralInformation={this.handleGeneralInformation} />
         </div>
         <div className="preview">
-          <Preview firstName={this.state.firstName} />
+          <Preview information={this.state} />
         </div>
       </div>
     );
