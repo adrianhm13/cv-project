@@ -1,26 +1,63 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100&display=swap');
 
 .App {
   text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100vw;
   justify-content: space-evenly;
+  gap: 50px;
 }
 
 .edit-information{
-  max-width: 50vw;
-  min-width: 50vw;
-  max-height: 100vh;
-  min-height: 100vh;
-  border: 1px solid black
+  max-width: 40vw;
+  min-width: 40vw;
+  max-height: 80vh;
+  min-height: 80vh;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.096);
+  background-color: #e2ece9;
+}
+.header{
+  min-width: 100vw;
+  min-height: 15vh;
+  background-color: #264653;
+  display: flex;
+  align-items: center;
+}
+.header h1{
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  padding: 25px;
+  font-size: 35px;
+  margin-left: 150px;
+}
+.title-section{
+  font-family: 'Roboto', sans-serif;
+  color:rgba(0, 0, 0, 0.705)
+}
+.content{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 100px;
+}
+.main-container{
+  max-width: 40%;
+  max-height: 80vh;
+  min-height: 80vh;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.096);
+  background-color: #e2ece9;
 }
 .preview{
-  max-width: 50vw;
-  min-width: 50vw;
-  max-height: 100vh;
-  min-height: 100vh;
-  border: 1px solid black
+  min-width: 40%;
+  max-width: 40%;
+  max-height: 80vh;
+  min-height: 80vh;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.096);
+  background-color: white;
+  display: flex;
 }
 
 .App-header {
@@ -32,5 +69,25 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.inputs{
+  margin: 10px;
+}
+input{
+  margin: 5px;
+  padding: 10px;
+  width: 80%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  resize: none;
+  border: 1px solid rgb(209, 209, 209)
+}
+input:hover{
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid rgb(136, 136, 136);
+}
+input:focus{
+  outline: none;
+  border: 1px solid rgb(34, 34, 34);
 }
 

@@ -1,0 +1,49 @@
+.preview-content{
+    width: 100%;
+    height: 100%;
+}
+.header-preview{
+    width: 100%;
+    min-height: 22%;
+    background-color: #14213dde;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 20px;
+}
+.name-preview{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    height: 50%;
+}
+.name-preview h3{
+    color: white;
+    font-size: 27px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin:15px 0 0 0;
+}
+.job-preview{
+    margin-left: 50px;
+}
+.job-preview h3{
+    color: white;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #118ab2;
+    margin: 0;
+}
+.header-preview h3{
+
+}
+.second-header-preview{
+    width: 100%;
+    height: 15%;
+    background-color: #14213df3;
+
+}

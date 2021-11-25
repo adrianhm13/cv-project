@@ -73,13 +73,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="header">
+          <h1>CV Creator</h1>
+        </div>
+        <div className="content">
         <div className="edit-information">
-          Hee
           <GeneralInformation handleGeneralInformation={this.handleGeneralInformation} />
         </div>
         <div className="preview">
           <Preview information={this.state} />
         </div>
+        </div>
+
       </div>
     );
   }

@@ -4,44 +4,74 @@ class GeneralInformation extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
-    const { handleFirstName, handleLastName, handleJobTitle, handleAddress, handlePhone, handleDescription} =
-      this.props.handleGeneralInformation;
-    const { firstName, lastName, jobTitle, address, phone, description} = this.props;
+    const {
+      handleFirstName,
+      handleLastName,
+      handleJobTitle,
+      handleAddress,
+      handlePhone,
+      handleDescription,
+    } = this.props.handleGeneralInformation;
+    const { firstName, lastName, jobTitle, address, phone, description } =
+      this.props;
     return (
       <div>
-        <div>
-          <label>First Name</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={handleFirstName}
-          ></input>
+        <div className="title-section">
+          <h3>General Information</h3>
         </div>
-        <div>
-        <label>Last Name</label>
-          <input type="text" value={lastName} onChange={handleLastName}></input>
-        </div>
-        <div>
-          <label>Job Title</label>
-          <input type="text" value={jobTitle} onChange={handleJobTitle}></input>
-        </div>
-        <div>
-          <label>Address</label>
-          <input type="text" value={address} onChange={handleAddress}></input>
-        </div>
-        <div>
-          <label>Phone</label>
-          <input type="text" value={phone} onChange={handlePhone}></input>
-        </div>
-        <div>
-          <label>Description</label>
-          <input type="text" value={description} onChange={handleDescription}></input>
+        <div className="inputs">
+          <div>
+            <input
+              type="text"
+              value={firstName}
+              onChange={handleFirstName}
+              placeholder="First Name"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={lastName}
+              onChange={handleLastName}
+              placeholder="Last Name"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={jobTitle}
+              onChange={handleJobTitle}
+              placeholder="Job Title"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={address}
+              onChange={handleAddress}
+              placeholder="Address"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={phone}
+              onChange={handlePhone}
+              placeholder="Phone"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={description}
+              onChange={handleDescription}
+              placeholder="Description"
+            ></input>
+          </div>
         </div>
       </div>
     );
