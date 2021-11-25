@@ -10,6 +10,10 @@ class App extends Component {
       generalInformation: {
         firstName: "",
         lastName: "",
+        jobTitle: "",
+        address: "",
+        phone: "",
+        description: "",
       }
 
 
@@ -17,20 +21,52 @@ class App extends Component {
   }
   handleGeneralInformation =  {
     handleFirstName: (e) => {
-      this.setState({
+      this.setState(prevState => ({
         generalInformation: {
+          ...prevState.generalInformation,
           firstName: e.target.value,
-          lastName: this.state.generalInformation.lastName
         }
-      });
+      }));
     },
     handleLastName: (e) => {
-      this.setState({
+      this.setState(prevState => ({
         generalInformation: {
-          firstName: this.state.generalInformation.firstName,
-          lastName: e.target.value
+          ...prevState.generalInformation,
+          lastName: e.target.value,
         }
-      });
+      }));
+    },
+    handleJobTitle: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          jobTitle: e.target.value,
+        }
+      }))
+    },
+    handleAddress: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          address: e.target.value,
+        }
+      }))
+    },
+    handlePhone: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          phone: e.target.value,
+        }
+      }))
+    },
+    handleDescription: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          description: e.target.value,
+        }
+      }))
     },
   }
 

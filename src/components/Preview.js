@@ -8,7 +8,7 @@ class Preview extends Component {
   }
 
   render() {
-    const { firstName, lastName } = this.props.information.generalInformation;
+    const { firstName, lastName, jobTitle, address, phone, description} = this.props.information.generalInformation;
     console.log(this.props);
     console.log(firstName);
     return (
@@ -16,6 +16,10 @@ class Preview extends Component {
         <div>
           <h1>{firstName}</h1>
           <h1>{lastName}</h1>
+          <h1>{jobTitle}</h1>
+          <h1>{address}</h1>
+          <h1>{phone}</h1>
+          <h1>{description}</h1>
         </div>
       </div>
     );
