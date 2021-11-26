@@ -15,9 +15,19 @@ class GeneralInformation extends Component {
       handleAddress,
       handlePhone,
       handleDescription,
+      handleEmail,
+      handleLinkedin,
     } = this.props.handleGeneralInformation;
-    const { firstName, lastName, jobTitle, address, phone, description } =
-      this.props;
+    const {
+      firstName,
+      lastName,
+      jobTitle,
+      address,
+      phone,
+      description,
+      email,
+      linkedin,
+    } = this.props;
     return (
       <div>
         <div className="title-section">
@@ -70,6 +80,22 @@ class GeneralInformation extends Component {
               value={description}
               onChange={handleDescription}
               placeholder="Description"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={email}
+              onChange={handleEmail}
+              placeholder="Email"
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={linkedin}
+              onChange={handleLinkedin}
+              placeholder="Linkedin"
             ></input>
           </div>
         </div>

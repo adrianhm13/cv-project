@@ -2,6 +2,7 @@ import "./App.css";
 import GeneralInformation from "./components/GeneralInformation";
 import React, { Component } from "react";
 import Preview from "./components/Preview";
+import Experience from "./components/Experience";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +15,16 @@ class App extends Component {
         address: "",
         phone: "",
         description: "",
-      }
-
+        email: "",
+        linkedin: "",
+      },
+      experience: [{
+        position: "",
+        company:"",
+        city: "",
+        dateFrom: "",
+        dateTo: "",
+      }]
 
     };
   }
@@ -68,6 +77,33 @@ class App extends Component {
         }
       }))
     },
+    handleEmail: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          email: e.target.value,
+        }
+      }))
+    },
+    handleLinkedin: (e) => {
+      this.setState(prevState => ({
+        generalInformation: {
+          ...prevState.generalInformation,
+          linkedin: e.target.value,
+        }
+      }))
+    },
+  }
+
+  handleExperience = {
+    handlePosition: (e) => {
+      this.setState(prevState => ({
+        experience: {
+          ...prevState.experience,
+          position: e.target.value,
+        }
+      }))
+    }
   }
 
   render() {
@@ -79,6 +115,7 @@ class App extends Component {
         <div className="content">
         <div className="edit-information">
           <GeneralInformation handleGeneralInformation={this.handleGeneralInformation} />
+          <Experience handleExperience={this.handleExperience}/>
         </div>
         <div className="preview">
           <Preview information={this.state} />
