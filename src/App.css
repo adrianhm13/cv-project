@@ -12,7 +12,6 @@
 .edit-information{
   max-width: 40vw;
   min-width: 40vw;
-  max-height: 80vh;
   min-height: 80vh;
   border-radius: 5px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.096);
@@ -52,12 +51,15 @@
 }
 .preview{
   min-width: 40%;
-  max-width: 40%;
-  max-height: 80vh;
   min-height: 80vh;
+  max-height: 100vh;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.096);
   background-color: white;
   display: flex;
+  flex-direction: column;
+  position: sticky; 
+  top: 10px;
+  margin-bottom: 10px;
 }
 
 .App-header {
@@ -91,3 +93,21 @@ input:focus{
   border: 1px solid rgb(34, 34, 34);
 }
 
+button{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  background-color: #264653;
+  width: 10%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease 0s;
+  animation-fill-mode: none;
+  color: white;
+  margin-top: 10px;
+}
+button:hover {
+  color: rgb(110, 110, 110);
+  transform: translateY(-2px);
+}

@@ -3,6 +3,9 @@ import GeneralInformation from "./components/GeneralInformation";
 import React, { Component } from "react";
 import Preview from "./components/Preview";
 import Experience from "./components/Experience";
+import Education from "./components/Education";
+import uniqid from "uniqid";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,93 +21,175 @@ class App extends Component {
         email: "",
         linkedin: "",
       },
-      experience: [{
+      experienceList: [
+        {
+          position: "",
+          company: "",
+          city: "",
+          dateFrom: "",
+          dateTo: "",
+          id: uniqid(),
+        },
+      ],
+      experience: {
         position: "",
-        company:"",
+        company: "",
         city: "",
         dateFrom: "",
         dateTo: "",
-      }]
-
+        id: uniqid(),
+      },
+      educationList: [
+        {
+          university: "",
+          city: "",
+          degree: "",
+          dateFrom: "",
+          dateTo: "",
+          id: uniqid(),
+        },
+      ],
+      education: {
+        university: "",
+        city: "",
+        degree: "",
+        dateFrom: "",
+        dateTo: "",
+        id: uniqid(),
+      },
     };
   }
-  handleGeneralInformation =  {
+  handleGeneralInformation = {
     handleFirstName: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           firstName: e.target.value,
-        }
+        },
       }));
     },
     handleLastName: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           lastName: e.target.value,
-        }
+        },
       }));
     },
     handleJobTitle: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           jobTitle: e.target.value,
-        }
-      }))
+        },
+      }));
     },
     handleAddress: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           address: e.target.value,
-        }
-      }))
+        },
+      }));
     },
     handlePhone: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           phone: e.target.value,
-        }
-      }))
+        },
+      }));
     },
     handleDescription: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           description: e.target.value,
-        }
-      }))
+        },
+      }));
     },
     handleEmail: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           email: e.target.value,
-        }
-      }))
+        },
+      }));
     },
     handleLinkedin: (e) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         generalInformation: {
           ...prevState.generalInformation,
           linkedin: e.target.value,
-        }
-      }))
+        },
+      }));
     },
-  }
+  };
 
   handleExperience = {
-    handlePosition: (e) => {
-      this.setState(prevState => ({
+    handlePosition: (index) => (e) => {
+      let position = e.target.value;
+      const experienceList = this.state.experienceList;
+      experienceList[index].position = position;
+      this.setState({ experienceList });
+    },
+    handleCompany: (index) => (e) => {
+      let company = e.target.value;
+      const experienceList = this.state.experienceList;
+      experienceList[index].company = company;
+      this.setState({ experienceList });
+    },
+    handleCity: (index) => (e) => {
+      let city = e.target.value;
+      const experienceList = this.state.experienceList;
+      experienceList[index].city = city;
+      this.setState({ experienceList });
+    },
+    handleDateFrom: (index) => (e) => {
+      let dateFrom = e.target.value;
+      const experienceList = this.state.experienceList;
+      experienceList[index].dateFrom = dateFrom;
+      this.setState({ experienceList });
+    },
+    handleDateTo: (index) => (e) => {
+      let dateTo = e.target.value;
+      const experienceList = this.state.experienceList;
+      experienceList[index].dateTo = dateTo;
+      this.setState({ experienceList });
+    },
+    handleDelete: (index) => {
+      const experienceList = this.state.experienceList;
+      const prevExperienceList = experienceList.slice(0, index);
+      const postExperienceList = experienceList.slice(index + 1);
+      const newExperienceList = [...prevExperienceList, ...postExperienceList];
+      this.setState({ experienceList: newExperienceList });
+    },
+  };
+  handleStudies = {};
+  addExperience = () => {
+    const newId = uniqid();
+    this.setState({});
+    this.setState(
+      {
         experience: {
-          ...prevState.experience,
-          position: e.target.value,
-        }
-      }))
-    }
-  }
+          position: "",
+          company: "",
+          city: "",
+          dateFrom: "",
+          dateTo: "",
+          id: newId,
+        },
+      },
+      () => {
+        const newExperienceList = this.state.experienceList.concat(
+          this.state.experience
+        );
+        this.setState({
+          experienceList: newExperienceList,
+        });
+      }
+    );
+  };
 
   render() {
     return (
@@ -113,18 +198,51 @@ class App extends Component {
           <h1>CV Creator</h1>
         </div>
         <div className="content">
-        <div className="edit-information">
-          <GeneralInformation handleGeneralInformation={this.handleGeneralInformation} />
-          <Experience handleExperience={this.handleExperience}/>
+          <div className="edit-information">
+            <GeneralInformation
+              handleGeneralInformation={this.handleGeneralInformation}
+            />
+            <div>
+              <AddSubTitle title="Experience" />
+              {this.state.experienceList.map((element, index) => {
+                return (
+                  <div key={element.id}>
+                    <Experience
+                      handleExperience={this.handleExperience}
+                      experienceInfo={this.state.experienceList[index]}
+                      index={index}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <button onClick={this.addExperience}>Add</button>
+            <AddSubTitle title="Education" />
+            {this.state.educationList.map((element, index) => {
+                return (
+                  <div key={element.id}>
+                    <Education
+                      handleEducation={this.handleEducation}
+                      educationInfo={this.state.educationList[index]}
+                      index={index}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+          <Preview className="preview" information={this.state} />
         </div>
-        <div className="preview">
-          <Preview information={this.state} />
-        </div>
-        </div>
-
       </div>
     );
   }
+}
+
+function AddSubTitle(props) {
+  return (
+    <div className="title-section">
+      <h3>{props.title}</h3>
+    </div>
+  );
 }
 
 export default App;
