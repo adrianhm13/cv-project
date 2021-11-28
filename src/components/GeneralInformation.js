@@ -14,7 +14,6 @@ class GeneralInformation extends Component {
       handleJobTitle,
       handleAddress,
       handlePhone,
-      handleDescription,
       handleEmail,
       handleLinkedin,
     } = this.props.handleGeneralInformation;
@@ -24,7 +23,6 @@ class GeneralInformation extends Component {
       jobTitle,
       address,
       phone,
-      description,
       email,
       linkedin,
     } = this.props;
@@ -72,14 +70,6 @@ class GeneralInformation extends Component {
               value={phone}
               onChange={handlePhone}
               placeholder="Phone"
-            ></input>
-          </div>
-          <div>
-            <input
-              type="text"
-              value={description}
-              onChange={handleDescription}
-              placeholder="Description"
             ></input>
           </div>
           <div>

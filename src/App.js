@@ -17,7 +17,6 @@ class App extends Component {
         jobTitle: "",
         address: "",
         phone: "",
-        description: "",
         email: "",
         linkedin: "",
       },
@@ -100,14 +99,6 @@ class App extends Component {
         },
       }));
     },
-    handleDescription: (e) => {
-      this.setState((prevState) => ({
-        generalInformation: {
-          ...prevState.generalInformation,
-          description: e.target.value,
-        },
-      }));
-    },
     handleEmail: (e) => {
       this.setState((prevState) => ({
         generalInformation: {
@@ -165,7 +156,45 @@ class App extends Component {
       this.setState({ experienceList: newExperienceList });
     },
   };
-  handleStudies = {};
+  handleEducation = {
+    handleUniversity: (index) => (e) => {
+      let university = e.target.value;
+      const educationList = this.state.educationList;
+      educationList[index].university = university;
+      this.setState({ educationList });
+    },
+    handleCity: (index) => (e) => {
+      let city = e.target.value;
+      const educationList = this.state.educationList;
+      educationList[index].city = city;
+      this.setState({ educationList });
+    },
+    handleDegree: (index) => (e) => {
+      let degree = e.target.value;
+      const educationList = this.state.educationList;
+      educationList[index].degree = degree;
+      this.setState({ educationList });
+    },
+    handleDateFrom: (index) => (e) => {
+      let dateFrom = e.target.value;
+      const educationList = this.state.educationList;
+      educationList[index].dateFrom = dateFrom;
+      this.setState({ educationList });
+    },
+    handleDateTo: (index) => (e) => {
+      let dateTo = e.target.value;
+      const educationList = this.state.educationList;
+      educationList[index].dateTo = dateTo;
+      this.setState({ educationList });
+    },
+    handleDelete: (index) => {
+      const educationList = this.state.educationList;
+      const prevEducationList = educationList.slice(0, index);
+      const postEducationList = educationList.slice(index + 1);
+      const newEducationList = [...prevEducationList, ...postEducationList];
+      this.setState({ educationList: newEducationList });
+    },
+  };
   addExperience = () => {
     const newId = uniqid();
     this.setState({});
@@ -186,6 +215,30 @@ class App extends Component {
         );
         this.setState({
           experienceList: newExperienceList,
+        });
+      }
+    );
+  };
+  addEducation = () => {
+    const newId = uniqid();
+    this.setState({});
+    this.setState(
+      {
+        education: {
+          university: "",
+          city: "",
+          degree: "",
+          dateFrom: "",
+          dateTo: "",
+          id: newId,
+        },
+      },
+      () => {
+        const newEducationList = this.state.educationList.concat(
+          this.state.education
+        );
+        this.setState({
+          educationList: newEducationList,
         });
       }
     );
@@ -217,8 +270,9 @@ class App extends Component {
               })}
             </div>
             <button onClick={this.addExperience}>Add</button>
-            <AddSubTitle title="Education" />
-            {this.state.educationList.map((element, index) => {
+            <div>
+              <AddSubTitle title="Education" />
+              {this.state.educationList.map((element, index) => {
                 return (
                   <div key={element.id}>
                     <Education
@@ -229,7 +283,10 @@ class App extends Component {
                   </div>
                 );
               })}
+            </div>
+            <button onClick={this.addEducation}>Add</button>
           </div>
+
           <Preview className="preview" information={this.state} />
         </div>
       </div>

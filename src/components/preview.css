@@ -6,8 +6,8 @@
 }
 .header-preview{
     width: 100%;
-    min-height: 18%;
-    max-height: 18%;
+    min-height: 15%;
+    max-height: 15%;
     background-color: #14213dde;
     display: flex;
     flex-direction: column;
@@ -41,12 +41,9 @@
     color: #118ab2;
     margin: 0;
 }
-.header-preview h3{
-
-}
 .second-header-preview{
     width: 100%;
-    height: 15%;
+    height: 10%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -63,7 +60,7 @@
     margin-left: 30px;
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 20px;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
@@ -71,7 +68,7 @@
 }
 i{
     color: white;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .subtitle-preview{
