@@ -25,7 +25,7 @@ class GeneralInformation extends Component {
       phone,
       email,
       linkedin,
-    } = this.props;
+    } = this.props.generalInformation;
     return (
       <div>
         <div className="title-section">

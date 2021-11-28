@@ -243,7 +243,49 @@ class App extends Component {
       }
     );
   };
+  loadExample = () => {
+    this.setState({
+      generalInformation: {
+        firstName: "Joseph",
+        lastName: "Dinae Trinity",
+        jobTitle: "Developer",
+        address: "Roadcross, 59, Manhattan",
+        phone: "+31 6 61223045",
+        email: "joseph.dinae@gmail.com",
+        linkedin: "Joseph Dinae Trinity",
+      },
+      experienceList: [
+        {
+          position: "Full Stack Developer",
+          company: "The One",
+          city: "Panatrae",
+          dateFrom: "2020",
+          dateTo: "2021",
+          id: uniqid(),
+        },
+        {
+          position: "Front End Developer",
+          company: "Thae Gen",
+          city: "Talaener",
+          dateFrom: "2018",
+          dateTo: "2020",
+          id: uniqid(),
+        },
 
+      ],
+      educationList: [
+        {
+          university: "Weathon College",
+          city: "Illinois",
+          degree: "Computer Science",
+          dateFrom: "2014",
+          dateTo: "2018",
+          id: uniqid(),
+        },
+      ],
+    })
+  
+  }
   render() {
     return (
       <div className="App">
@@ -254,6 +296,7 @@ class App extends Component {
           <div className="edit-information">
             <GeneralInformation
               handleGeneralInformation={this.handleGeneralInformation}
+              generalInformation={this.state.generalInformation}
             />
             <div>
               <AddSubTitle title="Experience" />
@@ -285,6 +328,10 @@ class App extends Component {
               })}
             </div>
             <button onClick={this.addEducation}>Add</button>
+            <div className="buttons-section">
+              <button onClick={this.loadExample}>Load Example</button>
+              <button>Generate PDF</button>
+            </div>
           </div>
 
           <Preview className="preview" information={this.state} />
