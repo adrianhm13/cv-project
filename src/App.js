@@ -1,12 +1,159 @@
 import "./App.css";
 import GeneralInformation from "./components/GeneralInformation";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Preview from "./components/Preview";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import uniqid from "uniqid";
-import html2pdf from "html2pdf.js"
+import html2pdf from "html2pdf.js";
 
+const AppFunctional = () => {
+  const [generalInformation, setGeneralInformation] = useState({
+    firstName: "",
+    lastName: "",
+    jobTitle: "",
+    address: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+  });
+  const [experienceList, setExperienceList] = useState([
+    {
+      position: "",
+      company: "",
+      city: "",
+      dateFrom: "",
+      dateTo: "",
+      id: uniqid(),
+    },
+  ]);
+  const [experience, setExperience] = useState({
+    position: "",
+    company: "",
+    city: "",
+    dateFrom: "",
+    dateTo: "",
+    id: uniqid(),
+  });
+  const [educationList, setEducationList] = useState([
+    {
+      university: "",
+      city: "",
+      degree: "",
+      dateFrom: "",
+      dateTo: "",
+      id: uniqid(),
+    },
+  ]);
+  const [education, setEducation] = useState({
+    university: "",
+    city: "",
+    degree: "",
+    dateFrom: "",
+    dateTo: "",
+    id: uniqid(),
+  });
+
+  const handleGeneralInformation = {
+    handleFirstName: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        firstName: e.target.value,
+      }));
+    },
+    handleLastName: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        lastName: e.target.value,
+      }));
+    },
+    handleJobTitle: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        jobTitle: e.target.value,
+      }));
+    },
+    handleAddress: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        address: e.target.value,
+      }));
+    },
+    handlePhone: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        phone: e.target.value,
+      }));
+    },
+    handleEmail: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        email: e.target.value,
+      }));
+    },
+    handleLinkedin: (e) => {
+      setGeneralInformation((generalInformation) => ({
+        ...generalInformation,
+        linkedin: e.target.value,
+      }));
+    }
+  };
+
+  return (
+    <div className="App">
+      <div className="header">
+        <h1>CV Creator</h1>
+      </div>
+      <div className="content">
+        <div className="edit-information">
+          <GeneralInformation
+            handleGeneralInformation={handleGeneralInformation}
+            generalInformation={generalInformation}
+          />
+          <div>
+            {/* <AddSubTitle title="Experience" />
+            {this.state.experienceList.map((element, index) => {
+              return (
+                <div key={element.id}>
+                  <Experience
+                    handleExperience={this.handleExperience}
+                    experienceInfo={this.state.experienceList[index]}
+                    index={index}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <button onClick={this.addExperience}>Add</button>
+          <div>
+            <AddSubTitle title="Education" />
+            {this.state.educationList.map((element, index) => {
+              return (
+                <div key={element.id}>
+                  <Education
+                    handleEducation={this.handleEducation}
+                    educationInfo={this.state.educationList[index]}
+                    index={index}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <button onClick={this.addEducation}>Add</button>
+          <div className="buttons-section">
+            <button onClick={this.loadExample}>Load Example</button>
+            <button onClick={this.printPdf}>Generate PDF</button>
+          </div>
+        </div>
+
+        <Preview className="preview" information={this.state} />
+      </div> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 class App extends Component {
   constructor(props) {
     super(props);
@@ -272,7 +419,6 @@ class App extends Component {
           dateTo: "2020",
           id: uniqid(),
         },
-
       ],
       educationList: [
         {
@@ -284,22 +430,21 @@ class App extends Component {
           id: uniqid(),
         },
       ],
-    })
-  
-  }
+    });
+  };
   printPdf = () => {
-    var element = document.getElementById('test')
+    var element = document.getElementById("test");
     var opt = {
-      margin:       0,
-      filename:     'cv.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      margin: 0,
+      filename: "cv.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-     
+
     // New Promise-based usage:
     html2pdf().from(element).set(opt).save();
-  }
+  };
   render() {
     return (
       <div className="App">
@@ -355,12 +500,12 @@ class App extends Component {
   }
 }
 
-function AddSubTitle(props) {
+const AddSubTitle = (props) => {
   return (
     <div className="title-section">
       <h3>{props.title}</h3>
     </div>
   );
-}
+};
 
-export default App;
+export default AppFunctional;
