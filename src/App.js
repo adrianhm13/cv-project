@@ -96,7 +96,46 @@ const AppFunctional = () => {
         ...generalInformation,
         linkedin: e.target.value,
       }));
-    }
+    },
+  };
+  const handleExperience = {
+    handlePosition: (index) => (e) => {
+      let position = e.target.value;
+      const copyExperienceList = JSON.parse(JSON.stringify(experienceList[index]))
+      copyExperienceList.position = position;
+      setExperienceList(([copyExperienceList]));
+    },
+    handleCompany: (index) => (e) => {
+      let company = e.target.value;
+      const copyExperienceList = JSON.parse(JSON.stringify(experienceList[index]))
+      copyExperienceList.company = company;
+      setExperienceList(([copyExperienceList]));
+    },
+    handleCity: (index) => (e) => {
+      let city = e.target.value;
+      const copyExperienceList = JSON.parse(JSON.stringify(experienceList[index]))
+      copyExperienceList.city = city;
+      setExperienceList(([copyExperienceList]));
+    },
+    handleDateFrom: (index) => (e) => {
+      let dateFrom = e.target.value;
+      const copyExperienceList = JSON.parse(JSON.stringify(experienceList[index]))
+      copyExperienceList.dateFrom = dateFrom;
+      setExperienceList(([copyExperienceList]));
+    },
+    handleDateTo: (index) => (e) => {
+      let dateTo = e.target.value;
+      const copyExperienceList = JSON.parse(JSON.stringify(experienceList[index]))
+      copyExperienceList.dateTo = dateTo;
+      setExperienceList(([copyExperienceList]));
+    },
+    handleDelete: (index) => {
+      const experienceList = this.state.experienceList;
+      const prevExperienceList = experienceList.slice(0, index);
+      const postExperienceList = experienceList.slice(index + 1);
+      const newExperienceList = [...prevExperienceList, ...postExperienceList];
+      this.setState({ experienceList: newExperienceList });
+    },
   };
 
   return (
@@ -111,20 +150,20 @@ const AppFunctional = () => {
             generalInformation={generalInformation}
           />
           <div>
-            {/* <AddSubTitle title="Experience" />
-            {this.state.experienceList.map((element, index) => {
+            <AddSubTitle title="Experience" />
+            {experienceList.map((element, index) => {
               return (
                 <div key={element.id}>
                   <Experience
-                    handleExperience={this.handleExperience}
-                    experienceInfo={this.state.experienceList[index]}
+                    handleExperience={handleExperience}
+                    experienceInfo={experienceList[index]}
                     index={index}
                   />
                 </div>
               );
             })}
           </div>
-          <button onClick={this.addExperience}>Add</button>
+          {/* <button onClick={this.addExperience}>Add</button>
           <div>
             <AddSubTitle title="Education" />
             {this.state.educationList.map((element, index) => {
@@ -146,10 +185,8 @@ const AppFunctional = () => {
           </div>
         </div>
 
-        <Preview className="preview" information={this.state} />
-      </div> */}
-          </div>
-        </div>
+        <Preview className="preview" information={this.state} /> */}
+      </div>
       </div>
     </div>
   );

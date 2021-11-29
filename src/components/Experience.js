@@ -4,6 +4,7 @@ const Experience = props => {
   const handleExperience = props.handleExperience;
   const experienceInfo = props.experienceInfo;
   const index = props.index;
+  console.log("Experience Info", experienceInfo)
   return (
     <div>
       <ExperienceFields
@@ -24,8 +25,10 @@ const ExperienceFields = props => {
     handleDateTo,
     handleDelete,
   } = props.handleExperience;
+  console.log(props.experienceInfo)
   const { position, company, city, dateFrom, dateTo, key } =
     props.experienceInfo;
+    console.log(position)
   const index = props.index;
   return (
     <div className="inputs">
