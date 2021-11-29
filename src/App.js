@@ -5,6 +5,7 @@ import Preview from "./components/Preview";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import uniqid from "uniqid";
+import html2pdf from "html2pdf.js"
 
 class App extends Component {
   constructor(props) {
@@ -286,6 +287,19 @@ class App extends Component {
     })
   
   }
+  printPdf = () => {
+    var element = document.getElementById('test')
+    var opt = {
+      margin:       0,
+      filename:     'cv.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+     
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
+  }
   render() {
     return (
       <div className="App">
@@ -330,7 +344,7 @@ class App extends Component {
             <button onClick={this.addEducation}>Add</button>
             <div className="buttons-section">
               <button onClick={this.loadExample}>Load Example</button>
-              <button>Generate PDF</button>
+              <button onClick={this.printPdf}>Generate PDF</button>
             </div>
           </div>
 

@@ -24,7 +24,7 @@ class Preview extends Component {
 
     return (
       <div className="preview">
-        <div className="preview-content">
+        <div id="test" className="preview-content">
           <div className="header-preview">
             <div className="name-preview">
               <h3>{firstName} </h3>&nbsp; <h3>{lastName}</h3>

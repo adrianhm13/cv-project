@@ -1,21 +1,20 @@
 .preview-content{
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    size: A4;
+    margin: 0;
 }
 .header-preview{
     width: 100%;
-    min-height: 15%;
-    max-height: 15%;
+    height: 50%;
     background-color: #14213dde;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    overflow: hidden;
     text-overflow: ellipsis;
     gap: 5px;
+    padding: 20px;
 }
 .name-preview{
     display: flex;
@@ -43,18 +42,20 @@
 }
 .second-header-preview{
     width: 100%;
-    height: 10%;
+    height: 20%;
+    padding: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     background-color: #14213df3;
 }
 .shc-preview{
     display: flex;
     flex-direction: row;
-    width: 50%;
-    height: 50%;
+    width: 45%;
+    height: 45%;
 }
 .shcc-preview{
     margin-left: 30px;
