@@ -11,9 +11,10 @@ const Preview = props => {
     description,
     email,
     linkedin,
-  } = props.information.generalInformation;
+  } = props.information;
 
-  const { experienceList, educationList } = props.information;
+  const experienceList = props.experience;
+  const educationList = props.education;
 
   return (
     <div className="preview">
@@ -53,17 +54,17 @@ const Preview = props => {
           </div>
         </div>
         <SubTitle subtitle="Experience" />
-        <ExperiencePreview experienceInfo={experienceList} />
+        <ExperiencePreview experience={experienceList} />
         <SubTitle subtitle="Education" />
-        <EducationPreview educationInfo={educationList} />
+        <EducationPreview education={educationList} />
       </div>
     </div>
   );
 }
 
 const ExperiencePreview = props => {
-  const experienceList = props.experienceInfo;
-  const listExperience = experienceList.map((element) => {
+  const experience = props.experience;
+  const listExperience = experience.map((element) => {
     console.log(element);
     return (
       <div key={element.id} className="experience-container-preview">
@@ -81,7 +82,7 @@ const ExperiencePreview = props => {
 }
 
 const EducationPreview = props => {
-  const educationList = props.educationInfo;
+  const educationList = props.education;
   const listEducation = educationList.map((element) => {
     const { university, city, degree, dateFrom, dateTo } = element;
     return (
